@@ -1,13 +1,41 @@
 			<!-- footer -->
-			<footer class="footer" role="contentinfo">
+			<footer>
+			<div class="container">
+            <div class="row">
+			<div class="col-md-3 contact">
+					<h2 class="footer-logo">KIG Consulting</h2>
+					<a href="#">@: hello@kigconsulting.com</a><br>
+					<a href="tel:8189155117">p: (818) 915 5117</a><br>
+					<a href="#">a: Avenue of the Stars, 2nd floor, Los Angeles, CA 90067</a>
 
-				<!-- copyright -->
-				<p class="copyright">
-					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Powered by', 'html5blank'); ?>
-					<a href="//wordpress.org" title="WordPress">WordPress</a> &amp; <a href="//html5blank.com" title="HTML5 Blank">HTML5 Blank</a>.
-				</p>
-				<!-- /copyright -->
+                </div>
+                <div class="col-md-3">
+                    <h4>Company</h4>
+                    <?php
+					wp_nav_menu( array(
+						'theme_location' => 'footer1-menu',
+						'menu_id'        => 'footer-menu-1',
+					) );
+					?>
+                </div>
+                <div class="col-md-3">
+                    <h4>Others</h4>
+                    <?php
+					wp_nav_menu( array(
+						'theme_location' => 'footer2-menu',
+						'menu_id'        => 'footer-menu-2',
+					) );
+					?>
+                </div>
+                <div class="col-md-3 sub">
+				<h4>Newsletter</h4>
+				<p>Subscribe to our newsletter and get all the cool news.</p>
+				<input type="email" name="emailaddress" placeholder="Enter Email">
+                </div>
 
+            </div>
+
+        </div>
 			</footer>
 			<!-- /footer -->
 

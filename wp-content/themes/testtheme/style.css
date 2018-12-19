@@ -93,10 +93,13 @@ a:hover,
 a:active {
 	outline: 0;
 }
-
+input{
+	border:none;
+	background:#EEE;
+	padding:0.5rem 1rem;
+}
 input:focus {
 	outline: 0;
-	border: 1px solid #04A4CC;
 }
 
 .btn {
@@ -418,6 +421,40 @@ input:focus {
 	border-radius:4px;
 	font-weight:700;
 }
+footer h4{
+	font-size:0.9rem;
+}
+footer .menu a{
+	color:#999;
+	font-weight:400;
+}
+footer .menu{
+	padding:0;
+	font-size:0.8rem;
+}
+footer .menu li{
+	list-style-type:none;
+	margin:0.5rem 0;
+}
+footer .contact a{
+	font-size:0.9rem;
+	color:#555;
+	font-weight:400;
+}
+.footer-logo{
+	color:#999;
+	text-transform: uppercase;
+	font-size:1.2rem;
+}
+footer .sub{
+	font-size:0.9rem;
+}
+footer .sub p{
+	color:#999;
+}
+footer .sub input{
+	width:100%;
+}
 /*------------------------------------*\
     IMAGES
 \*------------------------------------*/
@@ -428,16 +465,6 @@ input:focus {
 	TYPOGRAPHY
 \*------------------------------------*/
 
-@font-face {
-	font-family: 'Font-Name';
-	src: url('fonts/font-name.eot');
-	src: url('fonts/font-name.eot?#iefix') format('embedded-opentype'),
-		url('fonts/font-name.woff') format('woff'),
-		url('fonts/font-name.ttf') format('truetype'),
-		url('fonts/font-name.svg#font-name') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 
 /*------------------------------------*\
     RESPONSIVE
