@@ -18,12 +18,34 @@
 
 		<!-- analytics -->
 		<script>
-		(function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
-		(f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
-		l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', 'UA-XXXXXXXX-XX', 'yourdomain.com');
-		ga('send', 'pageview');
+			    jQuery(document).ready(function ($) {
+        $('.testimonial-items').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            dots: true
+        });
+		$('.menu-toggle').click(function() {
+
+$('.mobile-nav').fadeToggle("fast");
+$(this).toggleClass('open');
+});
+
+$(document).click(function(e) {
+var target = e.target;
+if (!$(target).is('.menu-toggle') && !$(target).parents().is('.menu-toggle')) {
+	$('.mobile-nav').fadeOut("fast");
+	$('.menu-toggle').removeClass('open');
+}
+});
+$("li.menu-item").hover(function() { // mouse enter
+$(this).find(" > .sub-menu").show(); // display immediate child
+
+}, function() { // mouse leave
+	$(this).find(".sub-menu").hide(); // hide if not current page
+});
+    });
+		            
 		</script>
 
 	</body>
