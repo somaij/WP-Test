@@ -34,8 +34,12 @@
                 </div>
 
             </div>
-
+			<div class="copyright d-flex flex-column flex-md-row justify-content-between">
+					<div>All rights reserved <?php echo date('Y');?> | Concept designed by Madesmpl</div>
+					<div><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/twitter.png"/></a><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/facebook.png"/></a><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/instagram.png"/></a></div>
+		</div>
         </div>
+		
 			</footer>
 			<!-- /footer -->
 
@@ -51,7 +55,24 @@
             infinite: true,
             slidesToShow: 3,
             slidesToScroll: 3,
-            dots: true
+            dots: true,
+			autoplay: true,
+			autoplaySpeed:3000,
+			responsive: [
+    {
+      breakpoint: 1192,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 786,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }]
         });
 		$('.menu-toggle').click(function() {
 

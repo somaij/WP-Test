@@ -105,6 +105,14 @@
 {
     right: -25px;
 }
+@media screen and (max-width:480px){
+    .slick-prev{
+        left:-34px;
+    }
+    .slick-next{
+        right:0;
+    }
+}
 [dir='rtl'] .slick-next
 {
     right: auto;

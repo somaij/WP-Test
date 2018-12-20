@@ -1,56 +1,107 @@
 <?php get_header(); ?>
-
-<div class="hero" style="background-image:url(<?php echo get_template_directory_uri(); ?>/img/Header_Image.png);">
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+<?php 
+//get all of the groups
+$hero = get_field('hero'); 
+$cta = get_field('cta');
+$approach = get_field('approach');
+$global = get_field('global');
+$support = get_field('support');
+if( $hero ): ?>
+<div class="hero" style="background-image:url(<?php echo $hero['background']; ?>);">
     <div class="wrapper">
         <div class="content">
-            <h1><small>Knowledge. Innovation. Growth</small><br>Experience creates<br>Opportunity</h1>
-            <h3>We've got your next move covered</h3>
-            <a href="/contact" class="btn btn-primary">Book an Appointment</a>
+
+            <h2>
+                <?php echo $hero['hero_top']; ?>
+            </h2>
+            <h1>
+                <?php echo $hero['hero_middle']; ?>
+            </h1>
+            <h3>
+                <?php echo $hero['hero_bottom']; ?>
+            </h3>
+            <a href="#" class="btn btn-primary">
+                <?php echo $hero['button_text']; ?></a>
         </div>
     </div>
     <img class="overlay" src="<?php echo get_template_directory_uri(); ?>/img/Hero_Divider_cropped.png" />
 </div>
+<?php endif; ?>
+<?php 
+if( have_rows('services') ): 
 
-
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+	while( have_rows('services') ): the_row(); ?>
 <div class="container services">
     <div class="row">
-        <div class="col-5 d-flex flex-column justify-content-center">
-            <h4>We take you that one step further</h4>
-            <h2>A strong team with a global presence</h2>
-            <p>Our focus is to deliver true results, focusing on strategic decisions and practical actions tailored to
-                our clients' unique reality. We engage all levels of an organization from day one, building momentum
-                and capabilities to sustain the success. We have over 50+ years of comprehensive professional
-                experience in a wide variety of industries.</p>
-            <strong><a href="#" class="d-flex arrow-link">We'll take you far. Learn More <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
+        <div class="col-12 col-md-5 d-flex flex-column justify-content-center">
+            <h4>
+                <?php the_sub_field('title_top'); ?>
+            </h4>
+            <h2>
+                <?php the_sub_field('title'); ?>
+            </h2>
+            <?php the_sub_field('text'); ?>
+            <strong><a href="#" class="d-flex arrow-link">
+                    <?php echo the_sub_field('link_text'); ?> <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
         </div>
-        <div class="col-5 offset-md-2">
-            <div class="row ">
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <div class="service-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/1316253-200.png" />
-                        Investment Advisory</div>
-                    <div class="service-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/1316232-200.png" />Technology &
-                        Digital</div>
-                    <div class="service-link" style="align-self: center;">
+        <div class="col-12 col-md-7 col-xl-5 offset-xl-2">
+            <div class="row">
+                <div class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center">
+                    <?php $service_1 = get_sub_field('service_1'); if( $service_1 ): ?>
+                    <a href="#" class="service-item">
+                        <div>
+                            <img src="<?php echo $service_1['image']; ?>" />
+                            <?php echo $service_1['caption']; ?>
+                        </div>
+                    </a>
+                    <?php endif;?>
+                    <?php $service_2 = get_sub_field('service_2'); if( $service_2 ): ?>
+                    <a href="#" class="service-item">
+                        <div>
+                            <img src="<?php echo $service_2['image']; ?>" />
+                            <?php echo $service_2['caption']; ?>
+                        </div>
+                    </a>
+                    <?php endif;?>
+                    <div class="service-link d-none d-sm-block" style="align-self: center;">
                         <strong><a href="#" class="d-flex arrow-link">View All Services <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
                     </div>
                 </div>
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <div class="service-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/1316272-200-reg.png" />Finance &
-                        Strategy</div>
-                    <div class="service-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/1316236-200.png" />Marketing & Sales</div>
-                    <div class="service-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/1316288-200.png" />Product
-                        Development</div>
+                <div class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center">
+                    <?php $service_3 = get_sub_field('service_1'); if( $service_3 ): ?>
+                    <a href="#" class="service-item">
+                        <div>
+                            <img src="<?php echo $service_3['image']; ?>" />
+                            <?php echo $service_3['caption']; ?>
+                        </div>
+                    </a>
+                    <?php endif;?>
+                    <?php $service_4 = get_sub_field('service_4'); if( $service_4 ): ?>
+                    <a href="#" class="service-item">
+                        <div>
+                            <img src="<?php echo $service_4['image']; ?>" />
+                            <?php echo $service_4['caption']; ?>
+                        </div>
+                    </a>
+                    <?php endif;?>
+                    <?php $service_5 = get_sub_field('service_5'); if( $service_5 ): ?>
+                    <a href="#" class="service-item">
+                        <div>
+                            <img src="<?php echo $service_5['image']; ?>" />
+                            <?php echo $service_5['caption']; ?>
+                        </div>
+                    </a>
+                    <?php endif;?>
+                </div>
+                <div class="col d-block d-sm-none">
+                    <strong><a href="#" class="d-flex arrow-link justify-content-center">View All Services <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php endwhile; endif;?>
 <div class="testimonials" style="background-image:url(<?php echo get_template_directory_uri(); ?>/img/Testimonials_Background.png);">
     <div class="container">
         <div class="row">
@@ -76,7 +127,7 @@
                         </div>
                     </div>
                     <div>
-                    <div class="item">
+                        <div class="item">
                             <div class="d-flex justify-content-start align-items-center">
                                 <div><img class="dp" src="<?php echo get_template_directory_uri(); ?>/img/Profiel.png" /></div>
                                 <div><strong>John B.</strong><br><small>Faux Company Inc.</small></div>
@@ -87,7 +138,7 @@
                         </div>
                     </div>
                     <div>
-                    <div class="item">
+                        <div class="item">
                             <div class="d-flex justify-content-start align-items-center">
                                 <div><img class="dp" src="<?php echo get_template_directory_uri(); ?>/img/Profiel.png" /></div>
                                 <div><strong>Jason R.</strong><br><small>Faux Company Inc.</small></div>
@@ -111,97 +162,122 @@
         </div>
     </div>
 </div>
+<?php if( $approach ): ?>
 <div class="container services approach">
     <div class="row">
-        <div class="col">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/OurApproach.png"/>
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <img src="<?php echo $approach['image']; ?>" />
         </div>
-        <div class="col d-flex flex-column justify-content-center">
-            <h4>Our Approach</h4>
-            <h2>We understand how to set you up for success</h2>
-            <p>Our service include a comprehensive consult to help identify gaps and opportunities, a detailed report that includes a project plan with timelines and milestones, a cost analysis, and a schedule. We also offer a suite of quality products with extended support and leadership to achieve success quickly and smoothly.</p>
-            <strong><a href="#" class="d-flex arrow-link">The time is now. Let's Start <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+            <h4>
+                <?php echo $approach['top_title']; ?>
+            </h4>
+            <h2>
+                <?php echo $approach['title']; ?>
+            </h2>
+            <?php echo $approach['text']; ?>
+            <strong><a href="#" class="d-flex arrow-link">
+                    <?php echo $approach['link_text']; ?> <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
         </div>
     </div>
 </div>
+<?php endif;?>
+<?php if( $global ): ?>
 <div class="container services global">
     <div class="row">
-        <div class="col d-flex flex-column justify-content-center">
-            <h4>Global Presence</h4>
-            <h2>Prepared to help you conquer the world</h2>
-            <p>KIG Consulting is a Global Management Consulting firm, serving and specializing in various industries and businesses. Our team of experts help our clients evolve and make drastic improvements on their performance through our assessments and development plans. Our consultants deliver an unmatched combination of breadth and depth of expertise.</p>
-            <strong><a href="#" class="d-flex arrow-link">The time is now. Let's Start <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+            <h4>
+                <?php echo $global['top_title']; ?>
+            </h4>
+            <h2>
+                <?php echo $global['title']; ?>
+            </h2>
+            <?php echo $global['text']; ?>
+            <strong><a href="#" class="d-flex arrow-link">
+                    <?php echo $global['link_text']; ?> <img src="<?php echo get_template_directory_uri(); ?>/img/arrow.svg" /></a></strong>
         </div>
-        <div class="col d-flex flex-column justify-content-center">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/World.png"/>
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <img src="<?php echo $global['image']; ?>" />
         </div>
     </div>
-    <hr>
 </div>
+<?php endif;?>
+<hr class="section-divider">
 <div class="container ">
     <div class="row">
         <div class="col">
-            <h3 class="small-underline">In a glance, you can expect...</h3>
-</div>
+            <h3 class="small-underline">
+                <?php the_field('expectations_title');?>
+            </h3>
+        </div>
     </div>
     <div class="check-container">
-    <div class="row">
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-         Lorem ipsum dolor sit
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-        consectetur adipiscing elit
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-        voluptate velit esse
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-        Excepteur sint occaecat
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-        voluptate velit esse
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-         Lorem ipsum dolor sit
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-        consectetur adipiscing elit
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-         Lorem ipsum dolor sit
-        </div>
-        <div class="col-4">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg"/>
-        voluptate velit esse
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                Lorem ipsum dolor sit
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                consectetur adipiscing elit
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                voluptate velit esse
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                Excepteur sint occaecat
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                voluptate velit esse
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                Lorem ipsum dolor sit
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                consectetur adipiscing elit
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                Lorem ipsum dolor sit
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/Check-mark.svg" />
+                voluptate velit esse
+            </div>
         </div>
     </div>
 </div>
-</div>
+<?php if( $support ): ?>
 <div class="container support-mail">
     <div class="row d-flex justify-content-center text-center">
-        <div class="col-6">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Support icon.svg"/>
-            <h2>Looking to get started?</h2>
-            <p>Contact our Customer Support that is always ready to help you with any possible questions, problems or information.</p>
-            <a href="#">support@kigconsulting.com</a>
+        <div class="col-12 col-md-6">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/Support icon.svg" />
+            <h2><?php echo $support['title']; ?></h2>
+            <?php echo $support['text']; ?>
+            <a href="#"><?php echo $support['email']; ?></a>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+<?php endif; ?>
+<?php if( $cta ): ?>
 <section class="cta" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/CTA background.png');">
-        <div class="container">
-            <div class="row">
-                <div class="col d-flex flex-direction-row align-items-center justify-content-around"><div><h3>Interested in our services? Book an appointment.</h3><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p></div> <a href="#" class="btn">Book your appointment now!</a></div>
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex flex-column flex-lg-row align-items-center justify-content-around">
+                <div>
+                    <h3><?php echo $cta['title']; ?></h3>
+                    <p><?php echo $cta['text']; ?></p>
+                </div> <a href="#" class="btn"><?php echo $cta['button_text']; ?></a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<?php endif; ?>
 <?php endwhile; ?>
 
 <?php else: ?>
